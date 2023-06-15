@@ -1,6 +1,6 @@
 # Langchain payments tool
 
-Explore the power of AI in web design with Langchain JS. This repository contains various examples of Langchain JS in action. You can create AI agent that can make payments and check payments status.
+This repository contains the code for the Langchain payments tools and example code for AI agent that is able to make payments using the Bitcoin Lightning Protocol.
 
 ## Install dependencies
 
