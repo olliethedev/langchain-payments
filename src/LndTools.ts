@@ -16,7 +16,6 @@ const createInvoice = async (input: string): Promise<string> => {
         const parsedInput = parseInt(input);
 
         const invoice = await lnService.createInvoice({ lnd, "mtokens": parsedInput * 1000 });
-        console.log({ invoice });
         return invoice.request;
     } catch (error: any) {
         return `Error: ${ error.message }`;
@@ -30,7 +29,6 @@ const checkInvoice = async (input: string): Promise<string> => {
     try {
         const decodedInvoice = await lnService.decodePaymentRequest({ lnd, request: input });
         const result = await lnService.getInvoice({ lnd, id: decodedInvoice.id });
-        console.log({ result });
         return result.is_confirmed ? "paid" : "unpaid";
     } catch (error: any) {
         return `Error: ${ error.message }`;
@@ -43,7 +41,6 @@ const payInvoice = async (input: string): Promise<string> => {
     console.log(`Paying invoice ${ input }...`);
     try {
         const result = await lnService.pay({ lnd, request: input });
-        console.log({ result });
         return result.is_confirmed ? "paid" : "unpaid";
     } catch (error: any) {
         return `Error: ${ error.message }`;
@@ -52,6 +49,8 @@ const payInvoice = async (input: string): Promise<string> => {
 
 
 // Define the tools
+
+
 const createInvoiceTool = new DynamicTool({
     name: "createBitcoinLightningInvoice",
     description: `Returns a real Bitcoin Lightning invoice request string.

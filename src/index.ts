@@ -10,6 +10,8 @@ const readline = require('readline').createInterface({
 
 
 async function run() {
+
+
     // Initialize the model with desired parameters
     const model = new ChatOpenAI({
         modelName: "gpt-3.5-turbo-0613",
@@ -19,7 +21,11 @@ async function run() {
     });
 
     // Add StyleTool to the tools array
-    const tools = [LndTools.createInvoiceTool, LndTools.checkInvoiceTool, LndTools.payInvoiceTool];
+    const tools = [
+        LndTools.createInvoiceTool, 
+        LndTools.checkInvoiceTool, 
+        LndTools.payInvoiceTool
+    ];
 
     // Initialize the executor with the tools and model
     const executor = await initializeAgentExecutorWithOptions(tools, model, {
