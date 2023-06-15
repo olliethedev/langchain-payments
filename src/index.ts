@@ -20,7 +20,7 @@ async function run() {
         timeout: 5 * 60 * 1000
     });
 
-    // Add StyleTool to the tools array
+    // Add all available tools to the array
     const tools = [
         LndTools.createInvoiceTool, 
         LndTools.checkInvoiceTool, 
